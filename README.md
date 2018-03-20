@@ -1,2 +1,2 @@
-# caculator
+# calculator
 software engeneering courese
