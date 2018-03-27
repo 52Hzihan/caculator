@@ -10,9 +10,10 @@ def SyntaxCheck(strlist):
     lp = 0
     rp = 0
     factor_follow = {'+', '-', '*', '/', '^', ')'}
-    for i, string in enumerate(strlist):
+    strlistcopy = strlist.copy()
+    for i, string in enumerate(strlistcopy):
         if string.isdigit() is True or string.find('.') != -1 or string == 'ans':
-            strlist[i] = 'num'
+            strlistcopy[i] = 'num'
         elif string == '(':
             lp = lp + 1
         elif string == ')':
@@ -20,7 +21,7 @@ def SyntaxCheck(strlist):
     if lp != rp:
         return length - 1
         
-    sym = strlist[0]
+    sym = strlistcopy[0]
 
     def getsym():
         nonlocal counter
@@ -28,7 +29,7 @@ def SyntaxCheck(strlist):
         if counter >= length:
             raise SymError('incomplete expression')
         nonlocal sym 
-        sym = strlist[counter]
+        sym = strlistcopy[counter]
 
     def testover():
         if counter == length - 1:
