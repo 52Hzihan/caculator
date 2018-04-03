@@ -6,4 +6,4 @@ git clone https://github.com/52Hzihan/calculator.git
 cd calculator  
 python core.py    
 
-![UI](pictures/UI.JPG)
+![UI](documents/pictures/UI.JPG)
