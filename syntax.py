@@ -47,9 +47,15 @@ def SyntaxCheck(strlist):
                 getsym()
             else:
                 raise SymError('incorrect symbol')
-        elif sym == 'sin' or sym == 'cos':
+        elif sym == '-':
             getsym()
             factor()
+        elif sym == 'sin' or sym == 'cos':
+            getsym()
+            if sym != '(':
+                raise SymError('incorrect symbol')
+            else:
+                factor()
         else:
             raise SymError('incorrect symbol')
         if sym not in factor_follow:
@@ -82,6 +88,6 @@ def SyntaxCheck(strlist):
 
 
 if __name__ == "__main__":
-    example1 = ['1', '+', 'sin', '(', '2', ')']
+    example1 = ['cos', '(', '32', '-', '3', '/', '5',')']
     print(SyntaxCheck(example1))
 

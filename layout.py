@@ -67,8 +67,8 @@ class Ui_MainWindow(object):
                     self.CalcState.eleList[i] <= '9'):
                 j = i
                 while (j < len(self.CalcState.eleList) and \
-                        self.CalcState.eleList[j] >= '0' and \
-                        self.CalcState.eleList[j] <= '9'):
+                        ((self.CalcState.eleList[j] >= '0' and \
+                        self.CalcState.eleList[j] <= '9') or self.CalcState.eleList[j] == '.')):
                     j += 1
                 calcList.append(''.join(self.CalcState.eleList[i:j]))
                 i = j
@@ -76,6 +76,8 @@ class Ui_MainWindow(object):
                 calcList.append(self.CalcState.eleList[i])
                 i += 1
         calcList_ = calcList[:]
+        if len(calcList) == 0:
+            return
         errLoc = SyntaxCheck(calcList)
         if (errLoc != -1):
             self.displayError(calcList, errLoc)

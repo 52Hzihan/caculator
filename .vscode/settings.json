@@ -1,0 +1,7 @@
+{
+    "files.defaultLanguage": "python", // ctrl+N新建文件后默认的语言
+    "debug.internalConsoleOptions": "neverOpen",
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.pythonPath": "C:\\Users\\85014\\Anaconda3\\python.exe"
+}
