@@ -51,7 +51,7 @@ class State:
 
         if (self.eleList[self.pointerIndex] == '('):
             endIndex = self.eleList[self.pointerIndex:].index(')') + 1
-            del self.eleList[self.pointerIndex:endIndex]
+            del self.eleList[self.pointerIndex:endIndex+1]
             self.pointerIndex -= 1
         elif (self.eleList[self.pointerIndex] == ')'):
             startIndex = self.pointerIndex - \
