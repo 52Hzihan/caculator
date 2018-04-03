@@ -1,4 +1,3 @@
-# TODO: adapt to modifications
 import unittest
 from state import State
 
@@ -83,15 +82,16 @@ class TestState(unittest.TestCase):
         self.assertEqual(s.pointerIndex, -1)
         s.inputFunction('sin')
         self.assertEqual(s.eleList, ['sin', '(', ')'])
+        self.assertEqual(s.pointerIndex, 1)
         s.backspace()
         self.assertEqual(s.eleList, ['sin'])
         self.assertEqual(s.pointerIndex, 0)
         s.inputBrackets()
         s.inputNumber('3')
-        s.movePointer('forward')
+        s.movePointer('+')
         s.backspace()
-        self.assertEqual(s.eleList, ['sin', '(', '3'])
-        self.assertEqual(s.pointerIndex, 2)
+        self.assertEqual(s.eleList, ['sin'])
+        self.assertEqual(s.pointerIndex, 0)
         s.backspace()
         s.backspace()
         s.backspace()
@@ -109,23 +109,23 @@ class TestState(unittest.TestCase):
 
     def test_movePointer(self):
         s = State()
-        s.movePointer('forward')
+        s.movePointer('+')
         self.assertEqual(s.pointerIndex, -1)
-        s.movePointer('backward')
+        s.movePointer('-')
         self.assertEqual(s.pointerIndex, -1)
         s.inputFunction('cos')
         self.assertEqual(s.eleList, ['cos', '(', ')'])
         self.assertEqual(s.pointerIndex, 1)
-        s.movePointer('forward')
+        s.movePointer('+')
         self.assertEqual(s.pointerIndex, 2)
-        s.movePointer('forward')
+        s.movePointer('+')
         self.assertEqual(s.pointerIndex, 2)
-        s.movePointer('backward')
+        s.movePointer('-')
         self.assertEqual(s.pointerIndex, 1)
-        s.movePointer('backward')
-        s.movePointer('backward')
+        s.movePointer('-')
+        s.movePointer('-')
         self.assertEqual(s.pointerIndex, -1)
-        s.movePointer('backward')
+        s.movePointer('-')
         self.assertEqual(s.pointerIndex, -1)
 
     def test_resetWithAns(self):
