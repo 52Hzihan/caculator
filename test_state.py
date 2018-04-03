@@ -44,7 +44,6 @@ class TestState(unittest.TestCase):
         s = State()
         s.inputNumber('1')
         s.inputNumber('3')
-        s.inputOperator('*')
         s.inputBrackets()
         self.assertEqual(s.eleList, ['1', '3', '*', '(', ')'])
         self.assertEqual(s.pointerIndex, 3)
@@ -97,6 +96,10 @@ class TestState(unittest.TestCase):
         s.backspace()
         self.assertEqual(s.eleList, [])
         self.assertEqual(s.pointerIndex, -1)
+        s.inputNumber('3')
+        s.inputFunction('sin')
+        self.assertEqual(s.eleList, ['3', '*', 'sin', '(', ')'])
+        self.assertEqual(s.pointerIndex, 3)
 
     def test_allClear(self):
         s = State()
