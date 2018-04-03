@@ -11,6 +11,10 @@ class TestSyntax(unittest.TestCase):
         e6 = ['52','*','6','^','(','cos','(', 'sin','3',')', ')']
         e7 = ['1','+','+','+','2']
         e8 = ['5.23', '+', '2']
+        e9 = ['1', '+']
+        e10 = ['(', '2', ')', '3']
+        e11 = ['(', '2', '(']
+
         self.assertEqual(SyntaxCheck(e1), -1)
         self.assertEqual(SyntaxCheck(e2), 1)
         self.assertEqual(SyntaxCheck(e3), 3)
@@ -19,6 +23,9 @@ class TestSyntax(unittest.TestCase):
         self.assertEqual(SyntaxCheck(e6), 8)
         self.assertEqual(SyntaxCheck(e7), 2)
         self.assertEqual(SyntaxCheck(e8), -1)
+        self.assertEqual(SyntaxCheck(e9), 1)
+        self.assertEqual(SyntaxCheck(e10), 3)
+        self.assertEqual(SyntaxCheck(e11), 2)
 
 
 if __name__ == '__main__':

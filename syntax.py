@@ -27,6 +27,7 @@ def SyntaxCheck(strlist):
         nonlocal counter
         counter = counter + 1
         if counter >= length:
+            counter = counter - 1
             raise SymError('incomplete expression')
         nonlocal sym 
         sym = strlistcopy[counter]
@@ -85,9 +86,3 @@ def SyntaxCheck(strlist):
         return counter
     except Over:
         return - 1
-
-
-if __name__ == "__main__":
-    example1 = ['cos', '(', '32', '-', '3', '/', '5',')']
-    print(SyntaxCheck(example1))
-
